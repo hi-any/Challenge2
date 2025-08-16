@@ -22,6 +22,7 @@ struct ContentView: View {
                         RoundedRectangle(cornerRadius: 16)
                             .fill(.gray)
                             .frame(width: 170, height: 60)
+                            .opacity(0.8)
                         Text("Geoguess!")
                             .foregroundStyle(.black)
                             .padding()
@@ -33,13 +34,25 @@ struct ContentView: View {
                         RoundedRectangle(cornerRadius: 16)
                             .fill(.yellow)
                             .frame(width: 170, height: 60)
+                            .opacity(0.8)
                         Text("Go to Location...")
                             .foregroundStyle(.black)
                             .padding()
                     }
                 }
             }
-            
+            Button{
+            } label:{
+                ZStack{
+                    RoundedRectangle(cornerRadius: 16)
+                        .fill(.green)
+                        .frame(width: 350, height: 60)
+                        .opacity(0.8)
+                    Text("Start!")
+                        .foregroundStyle(.black)
+                        .padding()
+                }
+            }
         }
     }
 }
