@@ -10,6 +10,7 @@ import MapKit
 struct ContentView: View {
     var body: some View {
         VStack {
+            Text("hi")
             Map()
                 .mapStyle(.hybrid(elevation: .realistic))
         }
