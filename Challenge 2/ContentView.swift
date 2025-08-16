@@ -18,26 +18,28 @@ struct ContentView: View {
             HStack{
                 Button{
                 } label:{
-                    Text("Geoguess!")
-                        .foregroundStyle(.black)
-                        .padding()
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 25)
-                                .fill(.gray)
-                                .frame(width: 120, height: 60)
-                                .opacity(0.5)
-                            )
+                    ZStack{
+                        RoundedRectangle(cornerRadius: 16)
+                            .fill(.gray)
+                            .frame(width: 170, height: 60)
+                        Text("Geoguess!")
+                            .foregroundStyle(.black)
+                            .padding()
+                    }
                 }
                 Button{
                 } label: {
-                    Text("Go to Location...")
-                        .padding()
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 16)
-                                .stroke(.yellow, lineWidth: 4)
-                )
+                    ZStack{
+                        RoundedRectangle(cornerRadius: 16)
+                            .fill(.yellow)
+                            .frame(width: 170, height: 60)
+                        Text("Go to Location...")
+                            .foregroundStyle(.black)
+                            .padding()
+                    }
                 }
             }
+            
         }
     }
 }
