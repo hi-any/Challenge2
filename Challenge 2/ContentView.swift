@@ -19,10 +19,13 @@ struct ContentView: View {
                 Button{
                 } label:{
                     Text("Geoguess!")
+                        .foregroundStyle(.black)
                         .padding()
                         .overlay(
-                            RoundedRectangle(cornerRadius: 16)
-                                .stroke(.gray, lineWidth: 4)
+                            RoundedRectangle(cornerRadius: 25)
+                                .fill(.gray)
+                                .frame(width: 120, height: 60)
+                                .opacity(0.5)
                             )
                 }
                 Button{
