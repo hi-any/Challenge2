@@ -8,7 +8,9 @@
 import SwiftUI
 import MapKit
 struct ContentView: View {
+    @State private var showPopup = false
     var body: some View {
+        ZStack{
         NavigationStack{
             VStack {
                 Text("Today's location is...")
@@ -19,15 +21,17 @@ struct ContentView: View {
                     .padding()
                 HStack{
                     Button{
-                    } label:{
-                        ZStack{
-                            RoundedRectangle(cornerRadius: 16)
-                                .fill(.gray)
-                                .frame(width: 170, height: 60)
-                                .opacity(0.8)
-                            Text("Geoguess!")
-                                .foregroundStyle(.black)
-                                .padding()
+                    } label: {
+                        NavigationLink(destination: startGame()) {
+                            ZStack{
+                                RoundedRectangle(cornerRadius: 16)
+                                    .fill(.gray)
+                                    .frame(width: 170, height: 60)
+                                    .opacity(0.8)
+                                Text("Geoguess!")
+                                    .foregroundStyle(.black)
+                                    .padding()
+                            }
                         }
                     }
                     Button{
@@ -43,22 +47,23 @@ struct ContentView: View {
                         }
                     }
                 }
-                Button{
-                } label:{
-                    ZStack{
-                        RoundedRectangle(cornerRadius: 16)
-                            .fill(.green)
-                            .frame(width: 350, height: 60)
-                            .opacity(0.8)
-                        Text("Start!")
-                            .foregroundStyle(.black)
-                            .padding()
-                    }
+            }
+            Button{
+            } label:{
+                ZStack{
+                    RoundedRectangle(cornerRadius: 16)
+                        .fill(.green)
+                        .frame(width: 350, height: 60)
+                        .opacity(0.8)
+                    Text("Start!")
+                        .foregroundStyle(.black)
+                        .padding()
                 }
             }
             .toolbar{
                 ToolbarItem(placement: .topBarLeading) {
                     Button{
+                        showPopup = true
                     } label: {
                         Text("  ?")
                             .font(.system(size: 25))
@@ -75,8 +80,37 @@ struct ContentView: View {
                 }
             }
         }
+            if showPopup {
+                Color.black.opacity(0.4)
+                    .edgesIgnoringSafeArea(.all)
+                
+                VStack(alignment: .trailing, spacing: 0) {
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            showPopup = false
+                        }) {
+                            Image(systemName: "xmark.circle.fill")
+                                .resizable()
+                                .frame(width: 24, height: 24)
+                                .foregroundColor(.gray)
+                                .padding()
+                        }
+                    }
+                    InstructionsView()
+                }
+                .frame(width: 300)
+                .background(Color.white)
+                .cornerRadius(12)
+                .shadow(radius: 10)
+                .transition(.scale)
+                .zIndex(1)
+            }
+        }
+        .animation(.easeInOut, value: showPopup)
     }
 }
+
 #Preview {
     ContentView()
 }
