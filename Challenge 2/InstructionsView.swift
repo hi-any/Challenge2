@@ -10,8 +10,6 @@ struct InstructionsView: View {
     @State private var showPopup = false
     var body: some View {
         VStack (alignment: .leading) {
-            Text("Instructions")
-                .font(.headline)
             Text("1) \n2) \n3) ")
         }
         .padding()
