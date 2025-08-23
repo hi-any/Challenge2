@@ -84,8 +84,11 @@ struct ContentView: View {
                 Color.black.opacity(0.4)
                     .edgesIgnoringSafeArea(.all)
                 
-                VStack(alignment: .trailing, spacing: 0) {
+                VStack(alignment: .leading, spacing: 0) {
                     HStack {
+                        Text("Instructions")
+                            .font(.headline)
+                            .padding()
                         Spacer()
                         Button(action: {
                             showPopup = false

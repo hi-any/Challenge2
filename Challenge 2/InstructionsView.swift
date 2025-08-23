@@ -9,13 +9,10 @@ import SwiftUI
 struct InstructionsView: View {
     @State private var showPopup = false
     var body: some View {
-        VStack {
+        VStack (alignment: .leading) {
             Text("Instructions")
                 .font(.headline)
-                .padding()
-            
             Text("1) \n2) \n3) ")
-                .padding()
         }
         .padding()
     }
