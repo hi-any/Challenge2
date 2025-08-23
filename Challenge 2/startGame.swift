@@ -12,39 +12,52 @@ struct startGame: View {
     @State private var elapsedTime: Int = 0
     @State private var timer: Timer? = nil
     var formattedTime: String {
-           let minutes = elapsedTime / 60
-           let seconds = elapsedTime % 60
-           return String(format: "%02d:%02d", minutes, seconds)
-       }
-       
-    var body: some View {
-        VStack{
-            Text("Today's Location is...")
-                .bold()
-                .font(.largeTitle)
-                .padding()
+        let minutes = elapsedTime / 60
+        let seconds = elapsedTime % 60
+        return String(format: "%02d:%02d", minutes, seconds)
+    }
     
-            Image("Image 1")
-                .resizable()
-                .padding()
-            Text("Time: \(formattedTime)")
-                .bold()
-                .monospaced()
-                .font(.largeTitle)
-                .onAppear {
-                    elapsedTime = 0
-                    timer?.invalidate()
-                    timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-                        elapsedTime += 1
-                    }
+    var body: some View {
+        
+        ZStack{
+            Map()
+                .mapStyle(.hybrid(elevation: .realistic))
+                .ignoresSafeArea()
+            VStack(alignment: .leading){
+                HStack(alignment: .top){
+                    Image("Image 1")
+                        .resizable()
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                        .padding()
+                        .frame(width: 200, height: 250)
                     
-                    
+                    Spacer()
                 }
+                Spacer()
+            }
+            VStack{
+                Spacer()
+                Text("Time: \(formattedTime)")
+                    .bold()
+                    .monospaced()
+                    .font(.largeTitle)
+                    .background(Color(red:12 , green:12 , blue: 12))
+                    .clipShape(RoundedRectangle (cornerRadius: 10))
+                    .padding()
+                    .onAppear {
+                        elapsedTime = 0
+                        timer?.invalidate()
+                        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+                            elapsedTime += 1
+                        }
+                    }
+                
+            }
             
             
         }
     }
 }
-    #Preview {
-        startGame()
-    }
+#Preview {
+    startGame()
+}

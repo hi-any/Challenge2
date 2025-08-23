@@ -12,7 +12,7 @@ struct InstructionsView: View {
         VStack (alignment: .leading) {
             Text("Instructions")
                 .font(.headline)
-            Text("1) \n2) \n3) ")
+            Text("1)Find location \n2)Choose to Geoguess or go to location ")
         }
         .padding()
     }
