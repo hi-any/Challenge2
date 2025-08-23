@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct OnBoardingView: View {
-    
+    @Binding var showOnboarding: Bool
     var fruits: [Fruit] = fruitsData
 
     
@@ -26,6 +26,6 @@ struct OnBoardingView: View {
 
 struct OnBoardingView_Previews: PreviewProvider {
     static var previews: some View {
-        OnBoardingView()
+        OnBoardingView(showOnboarding: .constant(true))
     }
 }

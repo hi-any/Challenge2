@@ -7,10 +7,10 @@
 import SwiftUI
 
 struct StartButtonView: View {
-    @AppStorage("isOnboarding") var isOnboarding: Bool?
+    @Binding var showOnboarding: Bool
     var body: some View {
         Button(action: {
-            isOnboarding = false
+            showOnboarding = false
         }) {
             HStack(spacing: 8) {
                 Text("Start")
@@ -30,7 +30,7 @@ struct StartButtonView: View {
 
 struct StartButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        StartButtonView()
+        StartButtonView(showOnboarding: $showOnboarding)
             .preferredColorScheme(.light)
             .previewLayout(.sizeThatFits)
     }

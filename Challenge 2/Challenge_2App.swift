@@ -15,16 +15,3 @@ struct Challenge_2App: App {
         }
     }
 }
-struct OnBoardingViewSwiftUIApp: App {
-    @AppStorage("isOnboarding") var isOnboarding: Bool = true
-    
-    var body: some Scene {
-        WindowGroup {
-            if isOnboarding {
-              OnBoardingView()
-            } else {
-              HomeView()
-            }
-        }
-    }
-}
