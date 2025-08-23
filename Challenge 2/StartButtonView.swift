@@ -21,17 +21,17 @@ struct StartButtonView: View {
             .padding(.horizontal, 16)
             .padding(.vertical, 10)
             .background(
-                Capsule().strokeBorder(Color.white, lineWidth: 1.25)
+                Capsule().strokeBorder(Color.black, lineWidth: 1.25)
             )
         }
-        .accentColor(Color.white)
+        .accentColor(Color.black)
     }
 }
 
 struct StartButtonView_Previews: PreviewProvider {
     static var previews: some View {
         StartButtonView()
-            .preferredColorScheme(.dark)
+            .preferredColorScheme(.light)
             .previewLayout(.sizeThatFits)
     }
 }
