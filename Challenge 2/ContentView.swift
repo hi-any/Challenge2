@@ -68,7 +68,7 @@ struct ContentView: View {
                             .padding()
                     }
                 }
-                .toolbar{
+                .toolbar {
                     ToolbarItem(placement: .topBarLeading) {
                         Button{
                             showPopup = true
