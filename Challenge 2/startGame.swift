@@ -30,15 +30,20 @@ struct startGame: View {
             Map()
                 .mapStyle(.hybrid(elevation: .realistic))
                 .ignoresSafeArea()
+            
+            
+            
+            
+            
             VStack {
                 HStack{
                     if tapped {
-                        
+                        Spacer()
                         Image("Image 1")
                             .resizable()
                             .matchedGeometryEffect(id: "Image 1", in: animation)
                             .frame(width: 400, height: 450)
-                            .clipShape(RoundedRectangle (cornerRadius: 12))
+                            .clipShape(RoundedRectangle(cornerRadius: 12))
                             .onTapGesture {
                                 withAnimation(.easeInOut(duration: 0.6)) {
                                     tapped.toggle()
@@ -47,46 +52,47 @@ struct startGame: View {
                     } else {
                         Image("Image 1")
                             .resizable()
-                            .clipShape(RoundedRectangle (cornerRadius: 12))
+                            .clipShape(RoundedRectangle(cornerRadius: 12))
                             .matchedGeometryEffect(id: "Image 1", in: animation)
                             .frame(width: 150, height: 200)
                             .onTapGesture {
                                 withAnimation(.easeInOut(duration: 0.6)) {
                                     tapped.toggle()
                                 }
+                                
                             }
                         Spacer()
                     }
                 }
-                Spacer()
-            }
-            Spacer()
-            
-            
-            
-            
-            VStack{
-                Spacer()
-                Text("Time: \(formattedTime)")
-                    .bold()
-                    .monospaced()
-                    .font(.largeTitle)
-                    .padding(7)
-                    .background(Color(red: 12, green: 12, blue: 12))
-                    .clipShape(RoundedRectangle(cornerRadius: 12))
-                    .onAppear {
-                        elapsedTime = 0
-                        timer?.invalidate()
-                        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-                            elapsedTime += 1
+                
+                
+                VStack{
+                    Spacer()
+                    Text("Time: \(formattedTime)")
+                        .bold()
+                        .monospaced()
+                        .font(.largeTitle)
+                        .padding(7)
+                        .background(Color(red:12 , green:12 , blue: 12))
+                        .clipShape(RoundedRectangle (cornerRadius: 10))
+                        .padding()
+                        .onAppear {
+                            elapsedTime = 0
+                            timer?.invalidate()
+                            timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+                                elapsedTime += 1
+                            }
                         }
-                    }
+                    
+                }
                 
             }
         }
-        
     }
 }
+
+
+
 #Preview {
     startGame()
 }
