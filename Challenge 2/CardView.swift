@@ -9,6 +9,7 @@ import SwiftUI
 struct CardView: View {
     var fruit: Fruit
     @State private var isAnimating: Bool = false
+    @Binding var showOnboarding: Bool
     var body: some View {
       ZStack {
         VStack(spacing: 20) {
@@ -31,7 +32,7 @@ struct CardView: View {
             .frame(maxWidth: 480)
           
           // BUTTON: START
-          StartButtonView()
+            StartButtonView(showOnboarding: $showOnboarding)
         } //: VSTACK
       } //: ZSTACK
       .onAppear {
@@ -47,7 +48,8 @@ struct CardView: View {
 }
 
 struct CardView_Previews: PreviewProvider {
+    @State static var showOnboarding = true
     static var previews: some View {
-        CardView(fruit: fruitsData[0])
+        CardView(fruit: fruitsData[0], showOnboarding: $showOnboarding)
     }
 }

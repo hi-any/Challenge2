@@ -12,9 +12,12 @@ struct HomeView : View {
     var body: some View{
         NavigationStack{
             VStack{
-//                Button(Image(systemName: "person.crop.circle.fill")){
-//                } label:{
-//                }
+                Button{
+                } label:{
+                    Image(systemName: "person.crop.circle.fill")
+                        .padding(EdgeInsets(top: 0, leading: -180, bottom: 0, trailing: 0))
+                        .font(.system(size: 40))
+                }
                 Map()
                     .mapStyle(.hybrid(elevation: .realistic))
                     .padding()

@@ -29,7 +29,7 @@ struct StartButtonView: View {
 }
 
 struct StartButtonView_Previews: PreviewProvider {
-    @Binding var showOnboarding: Bool
+    @State static var showOnboarding = true
     static var previews: some View {
         StartButtonView(showOnboarding: $showOnboarding)
             .preferredColorScheme(.light)
