@@ -14,14 +14,13 @@ struct OnBoardingView: View {
     
     var body: some View {
       TabView {
-        ForEach(fruits[0...6]) { item in
+        ForEach(fruits[0...3]) { item in
             CardView(fruit: item, showOnboarding: $showOnboarding)
         } //: LOOP
       } //: TAB
       .tabViewStyle(PageTabViewStyle())
       .padding(.vertical, 20)
     }
-
 }
 
 struct OnBoardingView_Previews: PreviewProvider {

@@ -67,6 +67,21 @@ struct startGame: View {
                             }
                         Spacer()
                     }
+                    Button{
+                        showPopup = true
+                    } label: {
+                        ZStack{
+                            Circle()
+                                .fill(Color.white)
+                                .opacity(0.4)
+                                .frame(width: 100, height: 100)
+                            
+                            Image(systemName: "lightbulb.max")
+                                .foregroundColor(.yellow)
+                                .font(.system(size: 50))
+                        }
+                    }
+                    .offset(x: -15, y: -70)
                 }
                 
                 
