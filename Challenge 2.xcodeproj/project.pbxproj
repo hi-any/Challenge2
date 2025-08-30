@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		D5B88D9F2E5018CF00C6329B /* Challenge 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "Challenge 2.app"; path = "/Users/yihan/Downloads/SAP/Challenge 2/build/Debug-iphoneos/Challenge 2.app"; sourceTree = "<absolute>"; };
+		D54CA65A2E61E32F00BA0E71 /* Challenge 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Challenge 2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -33,6 +33,7 @@
 			isa = PBXGroup;
 			children = (
 				D5B88DA12E5018CF00C6329B /* Challenge 2 */,
+				D54CA65A2E61E32F00BA0E71 /* Challenge 2.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,7 +59,7 @@
 			packageProductDependencies = (
 			);
 			productName = "Challenge 2";
-			productReference = D5B88D9F2E5018CF00C6329B /* Challenge 2.app */;
+			productReference = D54CA65A2E61E32F00BA0E71 /* Challenge 2.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */

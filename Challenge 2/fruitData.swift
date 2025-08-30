@@ -10,45 +10,27 @@ import SwiftUI
 
 let fruitsData: [Fruit] = [
     Fruit(
-        title: "Blueberry",
-        headline: "Blueberries are sweet, nutritious and wildly popular fruit all over the world.",
+        title: "Step 1",
+        headline: "Choose the game mode: Geoguess or Going to the location",
         image: "blueberry",
         Colors: [Color.blue]
     ),
     Fruit(
-        title: "Strawberry",
-        headline: "Widely appreciated for its characteristic aroma,  red color, juicy texture, and sweetness.",
+        title: "Step 2",
+        headline: "A picture of a place will appear. Try to find out where it is located",
         image: "strawberry",
         Colors: [Color.pink]
     ),
     Fruit(
-        title: "Lemon",
-        headline: "There's no doubt lemons are delicious, but does adding them to water make you healthier?",
+        title: "Step 3",
+        headline: "If you chose to geoguess, enter your answer in the textfield. If you chose to go to the location, visit the place in the map to win the game",
         image: "lemon",
         Colors: [Color.yellow]
     ),
     Fruit(
-        title: "Plum",
-        headline: "Plums are a very nutritious fruit. An excellent source of vitamins, minerals, fiber and antioxidants.",
+        title: "Others",
+        headline: "Time is ticking, but if you are stuck, get hints by pressing the hints button. (Note: Each hint adds 10 seconds to your total time!)",
         image: "plum",
         Colors: [Color.purple]
-    ),
-    Fruit(
-        title: "Lime",
-        headline: "Sour, round, and bright green citrus fruits. Limes are high in vitamin C, antioxidants, and other nutrients.",
-        image: "lime",
-        Colors: [Color.green]
-    ),
-    Fruit(
-        title: "Pomegranate",
-        headline: "Sweet, bell-shaped fruits that have been enjoyed since ancient times. They can be eaten crisp or soft.",
-        image: "pomegranate",
-        Colors: [Color.red]
-    ),
-    Fruit(
-        title: "Mango",
-        headline: "Sweet, bell-shaped fruits that have been enjoyed since ancient times. They can be eaten crisp or soft.",
-        image: "mango",
-        Colors: [Color.orange]
     )
 ]
