@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MapKit
+
 struct startGame: View {
     
     @Namespace private var animation
@@ -17,6 +18,9 @@ struct startGame: View {
     @State var tapped = false
     @State var imageLocationX: CGFloat = 1
     @State var imageLocationY: CGFloat = 1
+    @State private var showPopup = false
+    let locationManager = CLLocationManager()
+    let cameraPosition: MapCameraPosition = .region(.init(center:.init(latitude: 37.3346, longitude: -122.0090), latitudinalMeters: 1300, longitudinalMeters: 1300))
     var formattedTime: String {
         let minutes = elapsedTime / 60
         let seconds = elapsedTime % 60
@@ -27,14 +31,14 @@ struct startGame: View {
     var body: some View {
         
         ZStack{
-            Map()
-                .mapStyle(.hybrid(elevation: .realistic))
-                .ignoresSafeArea()
+            Map(initialPosition: cameraPosition){
+                Marker("Apple Vistor Center", systemImage: "tree.fill", coordinate: .appleHQ)
+                UserAnnotation()
+            }
             
-            
-            
-            
-            
+            .onAppear{
+                locationManager.requestWhenInUseAuthorization()
+            }
             VStack {
                 HStack{
                     if tapped {
@@ -83,10 +87,37 @@ struct startGame: View {
                                 elapsedTime += 1
                             }
                         }
-                    
                 }
-                
             }
+        }
+        if showPopup {
+            Color.black.opacity(0.4)
+                .edgesIgnoringSafeArea(.all)
+            
+            VStack(alignment: .leading, spacing: 0) {
+                HStack {
+                    Text("Instructions")
+                        .font(.headline)
+                        .padding()
+                    Spacer()
+                    Button(action: {
+                        showPopup = false
+                    }) {
+                        Image(systemName: "xmark.circle.fill")
+                            .resizable()
+                            .frame(width: 24, height: 24)
+                            .foregroundColor(.gray)
+                            .padding()
+                    }
+                }
+                InstructionsView()
+            }
+            .frame(width: 300)
+            .background(Color.white)
+            .cornerRadius(12)
+            .shadow(radius: 10)
+            .transition(.scale)
+            .zIndex(1)
         }
     }
 }
@@ -96,3 +127,7 @@ struct startGame: View {
 #Preview {
     startGame()
 }
+extension CLLocationCoordinate2D{
+    static let appleHQ = CLLocationCoordinate2D(latitude: 37.3346, longitude: -122.0090)
+}
+
