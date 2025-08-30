@@ -15,7 +15,7 @@ struct HomeView : View {
                 Button{
                 } label:{
                     Image(systemName: "person.crop.circle.fill")
-                        .padding(EdgeInsets(top: 0, leading: -180, bottom: 0, trailing: 0))
+                        .padding(EdgeInsets(top: 0, leading: -190, bottom: -10, trailing: 0))
                         .font(.system(size: 40))
                 }
                 Map()
@@ -52,18 +52,7 @@ struct HomeView : View {
                 Button(action: {
                     isOnboarding = true
                 }) {
-                    HStack(spacing: 8) {
-                        Text("Re-Start")
-                        
-                        Image(systemName: "arrow.right.circle")
-                            .imageScale(.large)
-                    }
-                    .padding(.horizontal, 16)
-                    .padding(.vertical, 10)
-                    .background(
-                        Capsule().strokeBorder(Color.black, lineWidth: 1.25)
-                    )
-                } //: BUTTON
+                }
                 .accentColor(Color.black)
             }
             .navigationBarHidden(true)

@@ -17,6 +17,7 @@ struct startGame: View {
     @State var tapped = false
     @State var imageLocationX: CGFloat = 1
     @State var imageLocationY: CGFloat = 1
+    @State private var showPopup = false
     var formattedTime: String {
         let minutes = elapsedTime / 60
         let seconds = elapsedTime % 60
@@ -30,11 +31,6 @@ struct startGame: View {
             Map()
                 .mapStyle(.hybrid(elevation: .realistic))
                 .ignoresSafeArea()
-            
-            
-            
-            
-            
             VStack {
                 HStack{
                     if tapped {
@@ -63,6 +59,21 @@ struct startGame: View {
                             }
                         Spacer()
                     }
+                    Button{
+                        showPopup = true
+                    } label: {
+                        ZStack{
+                            Circle()
+                                .fill(Color.white)
+                                .opacity(0.4)
+                                .frame(width: 100, height: 100)
+                            
+                            Image(systemName: "lightbulb.max")
+                                .foregroundColor(.yellow)
+                                .font(.system(size: 50))
+                        }
+                    }
+                    .offset(x: -15, y: -70)
                 }
                 
                 
@@ -83,10 +94,37 @@ struct startGame: View {
                                 elapsedTime += 1
                             }
                         }
-                    
                 }
-                
             }
+        }
+        if showPopup {
+            Color.black.opacity(0.4)
+                .edgesIgnoringSafeArea(.all)
+            
+            VStack(alignment: .leading, spacing: 0) {
+                HStack {
+                    Text("Instructions")
+                        .font(.headline)
+                        .padding()
+                    Spacer()
+                    Button(action: {
+                        showPopup = false
+                    }) {
+                        Image(systemName: "xmark.circle.fill")
+                            .resizable()
+                            .frame(width: 24, height: 24)
+                            .foregroundColor(.gray)
+                            .padding()
+                    }
+                }
+                InstructionsView()
+            }
+            .frame(width: 300)
+            .background(Color.white)
+            .cornerRadius(12)
+            .shadow(radius: 10)
+            .transition(.scale)
+            .zIndex(1)
         }
     }
 }
