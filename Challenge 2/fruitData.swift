@@ -25,7 +25,7 @@ let fruitsData: [Fruit] = [
         title: "Step 3",
         headline: "If you chose to geoguess, enter your answer in the textfield. If you chose to go to the location, visit the place in the map to win the game",
         image: "lemon",
-        Colors: [Color.yellow]
+        Colors: [Color.teal]
     ),
     Fruit(
         title: "Others",

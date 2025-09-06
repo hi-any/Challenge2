@@ -73,9 +73,9 @@ struct startGame: View {
                     } label: {
                         ZStack{
                             Circle()
-                                .fill(Color.white)
+                                .fill(Color.black)
                                 .opacity(0.4)
-                                .frame(width: 100, height: 100)
+                                .frame(width: 85, height: 85)
                             
                             Image(systemName: "lightbulb.max")
                                 .foregroundColor(.yellow)

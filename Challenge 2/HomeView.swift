@@ -19,7 +19,7 @@ struct HomeView : View {
                         .font(.system(size: 40))
                 }
                 Map()
-                    .mapStyle(.hybrid(elevation: .realistic))
+                    //.mapStyle(.hybrid(elevation: .realistic))
                     .padding()
                 Button{
                 } label:{

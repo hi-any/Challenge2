@@ -25,7 +25,7 @@ struct ContentView: View {
                         .font(.system(size: 30))
                         .offset(x: -55, y: 30)
                     Map()
-                        .mapStyle(.hybrid(elevation: .realistic))
+                        //.mapStyle(.hybrid(elevation: .realistic))
                         .padding()
                     HStack{
                         Button{
