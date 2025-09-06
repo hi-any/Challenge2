@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		D54CA65A2E61E32F00BA0E71 /* Challenge 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Challenge 2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5B88D9F2E5018CF00C6329B /* Challenge 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Challenge 2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -33,8 +33,16 @@
 			isa = PBXGroup;
 			children = (
 				D5B88DA12E5018CF00C6329B /* Challenge 2 */,
-				D54CA65A2E61E32F00BA0E71 /* Challenge 2.app */,
+				D5B88DA02E5018CF00C6329B /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		D5B88DA02E5018CF00C6329B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D5B88D9F2E5018CF00C6329B /* Challenge 2.app */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -59,7 +67,7 @@
 			packageProductDependencies = (
 			);
 			productName = "Challenge 2";
-			productReference = D54CA65A2E61E32F00BA0E71 /* Challenge 2.app */;
+			productReference = D5B88D9F2E5018CF00C6329B /* Challenge 2.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -87,7 +95,7 @@
 			mainGroup = D5B88D962E5018CF00C6329B;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = D5B88D962E5018CF00C6329B;
+			productRefGroup = D5B88DA02E5018CF00C6329B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
