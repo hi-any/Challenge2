@@ -56,19 +56,19 @@ struct ContentView: View {
                         }
                     }
                 }
-                Group {
-                    Button{
-                    } label:{
-                        ZStack{
-                            RoundedRectangle(cornerRadius: 16)
-                                .fill(.green)
-                                .frame(width: 350, height: 60)
-                                .opacity(0.8)
-                            Text("Start!")
-                                .foregroundStyle(.black)
-                                .padding()
-                        }
-                    }
+//                Group {
+//                    Button{
+//                    } label:{
+//                        ZStack{
+//                            RoundedRectangle(cornerRadius: 16)
+//                                .fill(.green)
+//                                .frame(width: 350, height: 60)
+//                                .opacity(0.8)
+//                            Text("Start!")
+//                                .foregroundStyle(.black)
+//                                .padding()
+//                        }
+//                    }
                     .toolbar {
                         ToolbarItem(placement: .topBarLeading) {
                             Button{
@@ -88,7 +88,7 @@ struct ContentView: View {
                         }
                     }
                     .navigationBarBackButtonHidden(true)
-                }
+//                }
             }
         }
         
