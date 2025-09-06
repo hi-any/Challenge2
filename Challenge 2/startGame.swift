@@ -18,6 +18,7 @@ struct startGame: View {
     @State var imageLocationX: CGFloat = 1
     @State var imageLocationY: CGFloat = 1
     @State private var showPopup = false
+    @State private var showingAlert = false
     var formattedTime: String {
         let minutes = elapsedTime / 60
         let seconds = elapsedTime % 60
@@ -59,8 +60,8 @@ struct startGame: View {
                             }
                         Spacer()
                     }
-                    Button{
-                        showPopup = true
+                    Button {
+                        showingAlert = true
                     } label: {
                         ZStack{
                             Circle()
@@ -74,6 +75,27 @@ struct startGame: View {
                         }
                     }
                     .offset(x: -15, y: -70)
+                    .alert(isPresented: $showingAlert) {
+                        Alert(title: Text("Hints"), message: Text("The <__> line"), dismissButton: .default(Text("Got it!")))
+                    }
+                    //                    Button{
+                    //                        withAnimation{
+                    //
+                    //                            showPopup = true
+                    //                        }
+                    //                    } label: {
+                    //                        ZStack{
+                    //                            Circle()
+                    //                                .fill(Color.white)
+                    //                                .opacity(0.4)
+                    //                                .frame(width: 100, height: 100)
+                    //
+                    //                            Image(systemName: "lightbulb.max")
+                    //                                .foregroundColor(.yellow)
+                    //                                .font(.system(size: 50))
+                    //                        }
+                    //                    }
+                    //                    .offset(x: -15, y: -70)
                 }
                 
                 
@@ -99,7 +121,9 @@ struct startGame: View {
         }
         if showPopup {
             Color.black.opacity(0.4)
-                .edgesIgnoringSafeArea(.all)
+                .ignoresSafeArea()
+                .transition(.opacity)
+                .zIndex(1)
             
             VStack(alignment: .leading, spacing: 0) {
                 HStack {
@@ -124,7 +148,7 @@ struct startGame: View {
             .cornerRadius(12)
             .shadow(radius: 10)
             .transition(.scale)
-            .zIndex(1)
+            .zIndex(2)
         }
     }
 }
