@@ -19,7 +19,6 @@ struct startGame: View {
     @State var tapped = false
     @State var imageLocationX: CGFloat = 1
     @State var imageLocationY: CGFloat = 1
-    @State private var showPopup = false
     let locationManager = CLLocationManager()
     let cameraPosition: MapCameraPosition = .region(.init(center:.init(latitude: 37.3346, longitude: -122.0090), latitudinalMeters: 1300, longitudinalMeters: 1300))
     @State private var showingAlert = false
@@ -87,24 +86,6 @@ struct startGame: View {
                     .alert(isPresented: $showingAlert) {
                         Alert(title: Text("Hints"), message: Text("The <__> line"), dismissButton: .default(Text("Got it!")))
                     }
-                    //                    Button{
-                    //                        withAnimation{
-                    //
-                    //                            showPopup = true
-                    //                        }
-                    //                    } label: {
-                    //                        ZStack{
-                    //                            Circle()
-                    //                                .fill(Color.white)
-                    //                                .opacity(0.4)
-                    //                                .frame(width: 100, height: 100)
-                    //
-                    //                            Image(systemName: "lightbulb.max")
-                    //                                .foregroundColor(.yellow)
-                    //                                .font(.system(size: 50))
-                    //                        }
-                    //                    }
-                    //                    .offset(x: -15, y: -70)
                 }
                 
                 
@@ -127,37 +108,6 @@ struct startGame: View {
                         }
                 }
             }
-        }
-        if showPopup {
-            Color.black.opacity(0.4)
-                .ignoresSafeArea()
-                .transition(.opacity)
-                .zIndex(1)
-            
-            VStack(alignment: .leading, spacing: 0) {
-                HStack {
-                    Text("Instructions")
-                        .font(.headline)
-                        .padding()
-                    Spacer()
-                    Button(action: {
-                        showPopup = false
-                    }) {
-                        Image(systemName: "xmark.circle.fill")
-                            .resizable()
-                            .frame(width: 24, height: 24)
-                            .foregroundColor(.gray)
-                            .padding()
-                    }
-                }
-                InstructionsView()
-            }
-            .frame(width: 300)
-            .background(Color.white)
-            .cornerRadius(12)
-            .shadow(radius: 10)
-            .transition(.scale)
-            .zIndex(2)
         }
     }
 }
