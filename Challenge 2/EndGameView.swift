@@ -9,13 +9,18 @@ import SwiftUI
 import MapKit
 struct EndGameView: View {
     var elapsedTime: Int
+    var formattedTime: String {
+        let minutes = elapsedTime / 60
+        let seconds = elapsedTime % 60
+        return String(format: "%02d:%02d", minutes, seconds)
+    }
     var body: some View {
         ZStack{
             NavigationStack{
                 VStack {
-                    Text("Today's location is <__>")
+                    Text("Today's location is Apple HQ")
                         .font(.system(size: 30))
-                        .offset(x: -33, y: 30)
+                        .offset(x: -2, y: 30)
                     Map()
                         .mapStyle(.hybrid(elevation: .realistic))
                         .padding()
@@ -24,12 +29,9 @@ struct EndGameView: View {
                         .offset(x: 0, y: -15)
                         .padding()
                     Spacer()
-                    Text("Time taken: \(elapsedTime)")
+                    Text("Time taken: \(formattedTime)")
                         .font(.system(size: 23))
-                        .offset(x: -103, y: -15)
-                    Text("Hints used: ")
-                        .font(.system(size: 23))
-                        .offset(x: -114, y: -15)
+                        .offset(x: -90, y: -15)
                 }
                 .toolbar {
                     ToolbarItem(placement: .topBarTrailing) {
@@ -47,5 +49,5 @@ struct EndGameView: View {
 
 
 #Preview {
-    EndGameView(elapsedTime: 10)
+    EndGameView(elapsedTime: 30)
 }

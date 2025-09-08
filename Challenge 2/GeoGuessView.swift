@@ -1,29 +1,30 @@
 //
-//  startGame.swift
+//  Untitled.swift
 //  Challenge 2
 //
-//  Created by Ethan Soh on 16/8/25.
+//  Created by Yang Yihan on 8/9/25.
 //
 
 import SwiftUI
 import MapKit
 import Foundation
 
-struct startGame: View {
-    
-    @StateObject private var locationManager = LocationManager()
+struct GeoGuessView: View {
     @Namespace private var animation
     @State private var imageScale: CGFloat = 1.0
     @State private var currentDate = Date.now
     @State private var elapsedTime: Int = 0
     @State private var timer: Timer? = nil
+    @State private var userAnswer: String = ""
+    @State private var resultText: String = ""
     @State var tapped = false
     @State var imageLocationX: CGFloat = 1
     @State var imageLocationY: CGFloat = 1
-    let systemlocationManager = CLLocationManager()
+    @State private var navigateToEndGame = false
     let cameraPosition: MapCameraPosition = .region(.init(center:.init(latitude: 37.3346, longitude: -122.0090), latitudinalMeters: 1300, longitudinalMeters: 1300))
     let targetLocation = CLLocation(latitude: 37.3346, longitude: -122.0090)
     @State private var showingAlert = false
+    let correctAnswer = "apple hq"
     var formattedTime: String {
         let minutes = elapsedTime / 60
         let seconds = elapsedTime % 60
@@ -32,33 +33,12 @@ struct startGame: View {
     }
     
     var body: some View {
-        VStack{
-            if let userLoc = locationManager.userLocation {
-                let distance = userLoc.distance(from: targetLocation)
-                
-                if distance <= 20 {
-                    Text("You're within 20 meters of Apple HQ!")
-                        .foregroundColor(.green)
-                        .padding()
-                } else {
-                    Text("You're \(Int(distance)) meters away.")
-                        .foregroundColor(.red)
-                        .padding()
-                }
-            } else {
-                Text("Getting your location...")
-                    .foregroundColor(.gray)
-                    .padding()
-            }
+        NavigationStack{
             ZStack{
                 Map(initialPosition: cameraPosition){
                     Marker("Apple Vistor Center", systemImage: "tree.fill", coordinate: .appleHQ)
-                    UserAnnotation()
                 }
                 
-                .onAppear{
-                    systemlocationManager.requestWhenInUseAuthorization()
-                }
                 VStack {
                     HStack{
                         if tapped {
@@ -125,35 +105,59 @@ struct startGame: View {
                                     elapsedTime += 1
                                 }
                             }
+                        ZStack{
+                            Rectangle()
+                                .fill(Color.white)
+                                .frame(height: 200)
+                                .cornerRadius(12)
+                                .shadow(radius: 4)
+                                .padding()
+                            VStack{
+                                Text("What is the location called?")
+                                    .font(.headline)
+                                TextField("Enter your answer", text: $userAnswer)
+                                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                                    .padding()
+                                    .autocapitalization(.none) // optional: prevents capitalizing input
+                                    .disableAutocorrection(true)
+                                VStack {
+                                    Button("Submit") {
+                                        checkAnswer()
+                                    }
+                                    .buttonStyle(.borderedProminent)
+                                    .padding()
+                                    .navigationDestination(isPresented: $navigateToEndGame) {
+                                        EndGameView(elapsedTime: 0)
+                                    }
+                                    
+                                    Text(resultText)
+                                        .font(.title2)
+                                        .foregroundColor(resultText == "" ? .red : .green)
+                                }
+                            }
+                            .padding()
+                            
+                            
+                        }
                     }
+                    
                 }
             }
         }
     }
+    func checkAnswer() {
+        let cleanedAnswer = userAnswer.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        if cleanedAnswer == correctAnswer {
+            print("correct ans")
+            navigateToEndGame = true
+        } else {
+            print("wrong answer")
+            resultText = "Nah"
+        }
+    }
 }
-
-//func getDist(lat1: Double, lon1: Double, lat2: Double, lon2: Double) -> Double {
-//    let R = 6371e3; // metres
-//    let φ1 = lat1 * Double.pi/180; // φ, λ in radians
-//    let φ2 = lat2 * Double.pi/180;
-//    let Δφ = (lat2-lat1) * Double.pi/180;
-//    let Δλ = (lon2-lon1) * Double.pi/180;
-//    
-//    let a = sin(Δφ/2) * sin(Δφ/2) +
-//    cos(φ1) * cos(φ2) *
-//    sin(Δλ/2) * sin(Δλ/2);
-//    let c = 2 * atan2(sqrt(a), sqrt(1-a));
-//    
-//    let d = R * c; // in metres
-//
-//    return d;
-//}
 
 
 #Preview {
-    startGame()
+    GeoGuessView()
 }
-extension CLLocationCoordinate2D{
-    static let appleHQ = CLLocationCoordinate2D(latitude: 37.3346, longitude: -122.0090)
-}
-

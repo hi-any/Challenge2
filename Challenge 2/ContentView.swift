@@ -30,7 +30,7 @@ struct ContentView: View {
                     HStack{
                         Button{
                         } label: {
-                            NavigationLink(destination: startGame()) {
+                            NavigationLink(destination: GeoGuessView()) {
                                 ZStack{
                                     RoundedRectangle(cornerRadius: 16)
                                         .fill(.gray)
@@ -44,14 +44,16 @@ struct ContentView: View {
                         }
                         Button{
                         } label: {
-                            ZStack{
-                                RoundedRectangle(cornerRadius: 16)
-                                    .fill(.yellow)
-                                    .frame(width: 170, height: 60)
-                                    .opacity(0.8)
-                                Text("Go to Location...")
-                                    .foregroundStyle(.black)
-                                    .padding()
+                            NavigationLink(destination: startGame()) {
+                                ZStack{
+                                    RoundedRectangle(cornerRadius: 16)
+                                        .fill(.yellow)
+                                        .frame(width: 170, height: 60)
+                                        .opacity(0.8)
+                                    Text("Go to Location...")
+                                        .foregroundStyle(.black)
+                                        .padding()
+                                }
                             }
                         }
                     }
