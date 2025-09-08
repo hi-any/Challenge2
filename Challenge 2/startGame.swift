@@ -163,18 +163,18 @@ struct startGame: View {
 }
 
 func getDist(lat1: Double, lon1: Double, lat2: Double, lon2: Double) -> Double {
-    var R = 6371e3; // metres
-    var φ1 = lat1 * Double.pi/180; // φ, λ in radians
-    var φ2 = lat2 * Double.pi/180;
-    var Δφ = (lat2-lat1) * Double.pi/180;
-    var Δλ = (lon2-lon1) * Double.pi/180;
+    let R = 6371e3; // metres
+    let φ1 = lat1 * Double.pi/180; // φ, λ in radians
+    let φ2 = lat2 * Double.pi/180;
+    let Δφ = (lat2-lat1) * Double.pi/180;
+    let Δλ = (lon2-lon1) * Double.pi/180;
     
-    var a = sin(Δφ/2) * sin(Δφ/2) +
+    let a = sin(Δφ/2) * sin(Δφ/2) +
     cos(φ1) * cos(φ2) *
     sin(Δλ/2) * sin(Δλ/2);
-    var c = 2 * atan2(sqrt(a), sqrt(1-a));
+    let c = 2 * atan2(sqrt(a), sqrt(1-a));
     
-    var d = R * c; // in metres
+    let d = R * c; // in metres
     
     return d;
 }
